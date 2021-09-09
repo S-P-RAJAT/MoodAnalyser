@@ -3,8 +3,15 @@ package com.brigelabz.moodanalyser;
 import java.util.Locale;
 
 public class MoodAnalyser {
+    String message;
 
-    public String analyseMood(String message) {
+    MoodAnalyser(){
+
+    }
+    MoodAnalyser(String message){
+        this.message = message;
+    }
+    public String analyseMood() {
 
         if (message.toLowerCase().contains("sad")) {
 
