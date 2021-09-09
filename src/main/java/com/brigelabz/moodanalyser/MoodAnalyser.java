@@ -5,19 +5,25 @@ import java.util.Locale;
 public class MoodAnalyser {
     String message;
 
-    MoodAnalyser(){
+    MoodAnalyser() {
 
     }
-    MoodAnalyser(String message){
+
+    MoodAnalyser(String message) {
         this.message = message;
     }
-    public String analyseMood() {
 
-        if (message.toLowerCase().contains("sad")) {
+    public String analyseMood() throws MoodAnalyserException{
 
-            return "SAD";
-        } else {
+        try {
+            if (message.toLowerCase().contains("sad")) {
 
+                return "SAD";
+            } else {
+
+                return "HAPPY";
+            }
+        } catch (NullPointerException e) {
             return "HAPPY";
         }
     }
