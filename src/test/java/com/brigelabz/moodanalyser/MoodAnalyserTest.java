@@ -1,10 +1,8 @@
 package com.brigelabz.moodanalyser;
 
-import jdk.nashorn.internal.codegen.CompilationException;
 import org.junit.Test;
 
 import org.junit.Assert;
-import org.junit.rules.ExpectedException;
 
 public class MoodAnalyserTest {
 
@@ -38,9 +36,19 @@ public class MoodAnalyserTest {
         MoodAnalyser moodAnalyser = new MoodAnalyser(null);
         try {
 
-            String mood = moodAnalyser.analyseMood();
+            moodAnalyser.analyseMood();
         } catch (MoodAnalyserException e) {
-            Assert.assertEquals("Please enter a proper message", e.getMessage());
+            Assert.assertEquals(MoodAnalyserException.ExceptionType.ENTERED_NULL, e.type);
+        }
+    }
+    @Test
+    public void givenEmptyMood_ShouldThrowException(){
+        MoodAnalyser moodAnalyser = new MoodAnalyser("");
+        try {
+
+            moodAnalyser.analyseMood();
+        } catch (MoodAnalyserException e) {
+            Assert.assertEquals(MoodAnalyserException.ExceptionType.ENTERED_EMPTY, e.type);
         }
     }
 }

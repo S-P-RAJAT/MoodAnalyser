@@ -1,7 +1,5 @@
 package com.brigelabz.moodanalyser;
 
-import java.util.Locale;
-
 public class MoodAnalyser {
     String message;
 
@@ -16,6 +14,9 @@ public class MoodAnalyser {
     public String analyseMood() throws MoodAnalyserException{
 
         try {
+            if (message.length() == 0){
+                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.ENTERED_EMPTY, "Please enter a proper message");
+            }
             if (message.toLowerCase().contains("sad")) {
 
                 return "SAD";
@@ -24,7 +25,7 @@ public class MoodAnalyser {
                 return "HAPPY";
             }
         } catch (NullPointerException e) {
-            throw new MoodAnalyserException("Please enter a proper message");
+            throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.ENTERED_NULL, "Please enter a proper message");
         }
     }
 }
