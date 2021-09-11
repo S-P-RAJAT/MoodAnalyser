@@ -10,9 +10,7 @@ build
 *.class
 
 gradle/
-build.gradle
 gradlew
 gradlew.bat
-settings.gradle
 
 .idea/
